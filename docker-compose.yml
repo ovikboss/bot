@@ -1,0 +1,25 @@
+
+  services:
+    db:
+      image: postgres:latest
+      restart: always
+      environment:
+        POSTGRES_USER: "postgres"
+        POSTGRES_PASSWORD: "password"
+        POSTGRES_DB: "telegram_db_1"
+      ports:
+        - "5432:5432" # Remove in production, expose only if needed for debugging
+      volumes:
+        - db_data:/var/lib/postgresql/data # Persist data
+
+    bot:
+      build: .  # Путь к Dockerfile вашего бота
+      restart: always
+      environment:
+        TZ: Europe/Moscow
+        BOT_TOKEN: your_telegram_bot_token
+        DATABASE_URL: postgresql://postgres:password@db:5432/telegram_db # Use service name as hostname
+      depends_on:
+        - db
+  volumes:
+    db_data:
