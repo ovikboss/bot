@@ -1,11 +1,11 @@
 
   services:
     db:
-      image: postgres:17
+      image: postgres:16
       restart: always
       environment:
         POSTGRES_USER: "postgres"
-        POSTGRES_PASSWORD: "password"
+        POSTGRES_PASSWORD: "myhardpassword"
         POSTGRES_DB: "telegram_db_1"
       ports:
         - "5432:5432" # Remove in production, expose only if needed for debugging
