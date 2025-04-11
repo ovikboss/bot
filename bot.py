@@ -9,7 +9,7 @@ storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
 
 
-TOKEN = "7937455538:AAFR9_6T2UtnKyUBt73XynlCe5y2cOyP-aE"
+TOKEN = "7937455538:AAGoggXJEyNvtsVX8pyBY-dnSuEpXnz86ZY"
 
 bot = Bot(token=TOKEN)
 
