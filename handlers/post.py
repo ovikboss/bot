@@ -39,12 +39,12 @@ async def post_text_entered(message: types.Message, state: FSMContext, bot: Bot)
                         post_text,
                         parse_mode=ParseMode.HTML, # for HTML formatting
                     )
-                    logger.info(f"Сообщение отправлено пользователю {user.telegram_id}")
+                    logger.info(f"Сообщение отправлено пользователю {user}")
                 except TelegramForbiddenError:
-                    logger.warning(f"Пользователь {user.telegram_id} заблокировал бота.")
+                    logger.warning(f"Пользователь {user} заблокировал бота.")
                 except Exception as e:
                     logger.error(
-                        f"Ошибка при отправке сообщения пользователю {user.telegram_id}: {e}"
+                        f"Ошибка при отправке сообщения пользователю {user}: {e}"
                     )
         else:
             await message.reply("Нет пользователей для рассылки.")
