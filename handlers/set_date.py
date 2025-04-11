@@ -2,7 +2,7 @@ from aiogram import Bot, types, F
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-
+from datetime import datetime
 from state import NameDate
 from .rout import router
 
@@ -41,8 +41,9 @@ async def name_entered(message: types.Message, state: FSMContext):
     await state.update_data(date=message.text)
     data = await state.get_data()
     telegram_id = message.from_user.id
+    date_object = datetime.strptime(data["date"], "%d-%m-%Y").date()
     db.set_name_and_date(
-        telegram_id=telegram_id, name=data["name"], date_of_bird=data["date"]
+        telegram_id=telegram_id, name=data["name"], date_of_bird=date_object
     )
     await state.clear()
     keyboard = InlineKeyboardBuilder()
