@@ -35,7 +35,7 @@ async def post_text_entered(message: types.Message, state: FSMContext, bot: Bot)
             for user in users:
                 try:
                     await bot.send_message(
-                        user.telegram_id,
+                        user,
                         post_text,
                         parse_mode=ParseMode.HTML, # for HTML formatting
                     )
