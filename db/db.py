@@ -16,7 +16,7 @@ class Database:
     def __init__(self):
         settings = Settings()
         self.engine = create_engine(
-            f"postgresql+psycopg2://{settings.USER}:{settings.PASSWORD}@localhost:{settings.PORT}/{settings.DBNAME}",
+            f"postgresql+psycopg2://{settings.USER}:{settings.PASSWORD}@db:{settings.PORT}/{settings.DBNAME}",
             isolation_level="READ COMMITTED",
         )
         Base.metadata.create_all(self.engine)
