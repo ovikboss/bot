@@ -17,6 +17,7 @@ Base = declarative_base()
 class Token(Base):
     __tablename__ = "token"
 
+    id = Column(Integer, primary_key= True)
     token = Column(String, unique=True)
 
 class Language(enum.Enum):
