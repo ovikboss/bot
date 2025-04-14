@@ -20,6 +20,9 @@ class Token(Base):
     id = Column(Integer, primary_key= True)
     token = Column(String, unique=True)
 
+    def __str__(self):
+        return f"{self.token}"
+
 class Language(enum.Enum):
     ENGLISH = "en"
     RUSSIAN = "ru"

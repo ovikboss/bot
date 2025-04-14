@@ -12,6 +12,7 @@ dp = Dispatcher(storage=storage)
 
 TOKEN = db.get_token()
 
+print(TOKEN)
 bot = Bot(token=TOKEN)
 
 
