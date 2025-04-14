@@ -14,6 +14,10 @@ import enum
 
 Base = declarative_base()
 
+class Token(Base):
+    __tablename__ = "token"
+
+    token = Column(String, unique=True)
 
 class Language(enum.Enum):
     ENGLISH = "en"

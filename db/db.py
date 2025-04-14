@@ -1,6 +1,6 @@
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy import create_engine, select, or_
-from .models import Base, User, Message, Language
+from .models import Base, User, Message, Language, Token
 from datetime import date
 import logging
 
@@ -16,10 +16,15 @@ class Database:
     def __init__(self):
         settings = Settings()
         self.engine = create_engine(
-            f"postgresql+psycopg2://{settings.USER}:{settings.PASSWORD}@db:{settings.PORT}/{settings.DBNAME}",
+            f"postgresql+psycopg2://{settings.USER}:{settings.PASSWORD}@localhost:{settings.PORT}/{settings.DBNAME}",
             isolation_level="READ COMMITTED",
         )
         Base.metadata.create_all(self.engine)
+
+    def get_token(self):
+        with Session(self.engine) as session:
+            token = session.query(Token).first()
+            return str(token)
 
     def create_user(self, telegram_id):
         with Session(self.engine) as session:

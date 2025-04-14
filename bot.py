@@ -3,13 +3,14 @@ from aiogram import Bot, types, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 
 from handlers.rout import router
+from db import db
 
 storage = MemoryStorage()
 
 dp = Dispatcher(storage=storage)
 
 
-TOKEN = "7937455538:AAGoggXJEyNvtsVX8pyBY-dnSuEpXnz86ZY"
+TOKEN = db.get_token()
 
 bot = Bot(token=TOKEN)
 
