@@ -23,7 +23,7 @@ class Database:
 
     def get_token(self):
         with Session(self.engine) as session:
-            token = session.query(Token).first()
+            token = session.query(Token.token).first()
             return str(token)
 
     def create_user(self, telegram_id):
