@@ -24,7 +24,6 @@ async def set_commands(bot: Bot):
         types.BotCommand(
             command="find_twin", description="Найти астрологического близнеца"
         ),
-        types.BotCommand(command="send_message", description="Отправить сообщение"),
         types.BotCommand(
             command="set_date_and_name", description="Установить имя и дату рождения"
         ),
